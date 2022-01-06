@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Upload</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="https://image.flaticon.com/icons/png/512/46/46389.png">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+
+
+        <style>
+            body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+            .container {
+                position: absolute;
+                width: 160px;
+                height: 160px;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+
+            .item {
+                width: 80px;
+                height: 80px;
+                position: absolute;
+            }
+
+            .item-1 {
+                background-color: #FA5667;
+                top: 0;
+                left: 0;
+                z-index: 100;
+                animation: item-1_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+            }
+
+            .item-2 {
+                background-color: #7A45E5;
+                top: 0;
+                right: 0;
+                z-index: 100;
+                animation: item-2_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+            }
+
+            .item-3 {
+                background-color: #1B91F7;
+                bottom: 0;
+                right: 0;
+                z-index: 100;
+                animation: item-3_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+            }
+
+            .item-4 {
+                background-color: #FAC24C;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                animation: item-4_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+            }
+
+            @keyframes item-1_move {
+                0%, 100% {transform: translate(0, 0)}
+                25% {transform: translate(0, 80px)}
+                50% {transform: translate(80px, 80px)}
+                75% {transform: translate(80px, 0)}
+            }
+
+            @keyframes item-2_move {
+                0%, 100% {transform: translate(0, 0)}
+                25% {transform: translate(-80px, 0)}
+                50% {transform: translate(-80px, 80px)}
+                75% {transform: translate(0, 80px)}
+            }
+
+            @keyframes item-3_move {
+                0%, 100% {transform: translate(0, 0)}
+                25% {transform: translate(0, -80px)}
+                50% {transform: translate(-80px, -80px)}
+                75% {transform: translate(-80px, 0)}
+            }
+
+            @keyframes item-4_move {
+                0%, 100% {transform: translate(0, 0)}
+                25% {transform: translate(80px, 0)}
+                50% {transform: translate(80px, -80px)}
+                75% {transform: translate(0, -80px)}
+            }
+
+        </style>
+    </head>
+    <body class="w3-light-grey w3-content" style="max-width:1600px">
+        <!-- Sidebar/menu -->
+        <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+            <div class="w3-container">
+                <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+                <i class="fa fa-remove"></i>
+                </a>
+                <h4><b>THE FINDER  </b><i class='fas fa-search w3-spin'></i></h4><br>
+            </div>
+            <div class="w3-bar-block">
+                <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
+                <a href="/upload" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fas fa-upload fa-fw w3-margin-right"></i>UPLOAD</a>
+                <a href="/gallery" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-images fa-fw w3-margin-right"></i>GALLERY</a>
+                <a href="/duplicate" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-clone fa-fw w3-margin-right"></i>SEARCH NEAR-DUPLICATES</a>
+            </div>
+        </nav>
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main" style="margin-left:300px">
+            <!-- Header -->
+            <header id="portfolio">
+                <div class="w3-container" style="text-align:center; padding-top: 10px;">
+                    <h1 class="w3-animate-right"><b>Upload your image</b></h1>
+                    <div class="alert alert-info w3-animate-right" >
+                        <strong>Upload a .jpg image</strong><br>
+                        <strong>Once you click on upload, wait a few seconds and you'll see the results</strong>
+                    </div>
+
+                    <div class="w3-section w3-bottombar w3-padding-4">
+                    </div>
+                </div>
+            </header>
+            <div class="w3-animate-right">
+                <img src="/static/Image upload-bro.png" style="width: 30%; margin-top: -30px; display: block; margin-left: auto; margin-right: auto;" id="upload-bro">
+                <div class="container" id="loader">
+                    <div class="item item-1"></div>
+                    <div class="item item-2"></div>
+                    <div class="item item-3"></div>
+                    <div class="item item-4"></div>
+                </div>
+                <div style="width: 60%; display: block; margin-left: auto; margin-right: auto;" id="form">
+                    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                        <div class="custom-file">
+                            <input type="file" name="file" accept=".jpg" class="custom-file-input" id="file-picker" required>
+                            <label class="custom-file-label" for="file-picker">Choose file</label>
+                            <div class="custom-file" id="nomeFile" style="display: none;"></div>
+                        </div>
+                        <div class="">
+                            <label class="form-label" for="typeNumber">How many similar images do you want to see? (1-10)</label>
+                            <input type="number" id="typeNumber" name="quantity" min="1" max="10" value=5 class="form-control" style="width: 30%;"/>
+                        </div>
+                        <hr>
+                        <button class="btn btn-primary submit" type="submit">Upload</button>
+
+                        <div class="custom-file" id="msg" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            $( document ).ready(function() {
+                document.getElementById("loader").style.display = "none";
+            });
+
+            // Script to open and close sidebar
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+                document.getElementById("myOverlay").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+                document.getElementById("myOverlay").style.display = "none";
+            }
+
+            var fileSupportato = false;
+
+            $("#file-picker").change(function(){
+                var input = document.getElementById('file-picker');
+                var filename = input.files[0].name;
+                document.getElementById("nomeFile").style.display = "block";
+                document.getElementById("msg").style.display = "block";
+                document.getElementById("nomeFile").innerHTML = "<strong>Files:</strong> "+filename;
+                for (var i=0; i<input.files.length; i++)
+                {
+                    var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+                    if ((ext == 'jpg'))
+                    {
+                        $("#msg").text("File is supported")
+                        fileSupportato = true;
+                    }
+                    else
+                    {
+                        $("#msg").text("File is NOT supported")
+                        document.getElementById("file-picker").value ="";
+                        fileSupportato = false;
+                    }
+                }
+            });
+
+            function gallery(){
+                location.href="/gallery";
+            }
+
+            $('.submit').click(function() {
+                if(fileSupportato){
+                    document.getElementById("form").style.opacity = 0.3;
+                    document.getElementById("upload-bro").style.opacity = 0.3;
+                    document.getElementById("loader").style.display = "block";
+                }
+            })
+
+
+        </script>
+    </body>
+</html>

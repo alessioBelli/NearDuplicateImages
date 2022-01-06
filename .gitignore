@@ -1,0 +1,8 @@
+images/
+similiJson/
+utils/histograms.yml
+__pycache__/
+inputFolder/*
+inputFeatures/
+inputHistograms/
+inputDescriptors/

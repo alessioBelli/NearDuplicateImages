@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Results</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="https://image.flaticon.com/icons/png/512/46/46389.png">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+        <style>
+            body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+        </style>
+        <script type = "text/javascript" >
+            history.pushState(null, null, location.href);
+            history.back();
+            history.forward();
+
+            window.onpopstate = function () {
+                document.getElementById("alert").innerHTML = "<div class=\"alert alert-warning\" role=\"alert\">To upload a new photo, click on the <b>\"Upload\"</b> menu item</div>"
+                history.go(1); };
+        </script>​
+    </head>
+    <body class="w3-light-grey w3-content" style="max-width:1600px; margin-top: -22px;" onbeforeunload="HandleBackFunctionality()">
+        <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+            <div class="w3-container">
+                <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+
+                </a>
+                <h4><b>THE FINDER  </b><i class='fas fa-search w3-spin'></i></h4><br>
+                <b>Uploaded image:</b>
+                <img src="{{url_for('send_image_results', filename=input_image)}}" alt="immagine input" style="width:100%;" class="w3-round w3-animate-left">
+
+            </div>
+            <div class="w3-bar-block">
+                <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-animate-left"><i class="fa fa-th-large fa-fw w3-margin-right"></i>HOME</a>
+                <a href="/upload" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-animate-left"><i class="fas fa-upload fa-fw w3-margin-right"></i>UPLOAD</a>
+                <a onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal w3-animate-left"><i class="fas fa-list-alt fa-fw w3-margin-right"></i>RESULTS</a>
+                <a href="/gallery" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-animate-left"><i class="fas fa-images fa-fw w3-margin-right"></i>GALLERY</a>
+                <a href="/duplicate" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fas fa-clone fa-fw w3-margin-right"></i>SEARCH NEAR-DUPLICATES</a>
+            </div>
+        </nav>
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main" style="margin-left:300px">
+            <div id="alert"></div>
+            <!-- Header -->
+            <header id="portfolio">
+                <div class="w3-container w3-animate-right">
+                    <h1><b>Most similar images:</b></h1>
+                    <div class="w3-section w3-bottombar w3-padding-4">
+                    </div>
+                </div>
+            </header>
+
+            <div class="w3-row-padding">
+                {% for image_name in dati %}
+                <div class="w3-third w3-container w3-margin-bottom" style="text-align:center; padding-bottom: 40px; width: 33%; height:250px;margin-top:20px;">
+                    {% if image_name['percentage_orb']|int > 70 %}
+                    <img src="{{url_for('send_image_results', filename=image_name['name'])}}" alt="Immagine simile" style="border: solid 4px red; border-radius: 10px; max-height: 100%;max-width:100%;" class="w3-hover-opacity w3-animate-right" onclick="onClick(this)">
+                    {% else %}
+                    <img src="{{url_for('send_image_results', filename=image_name['name'])}}" alt="Immagine simile" style="border: solid 4px white; border-radius: 10px; max-height: 100%;max-width:100%;" class="w3-hover-opacity w3-animate-right" onclick="onClick(this)">
+                    {% endif %}
+                    <div class="" style="height: 48px;">
+                        <p><b>{{image_name['name']}}</b><br>
+                                <span data-toggle="tooltip" data-html="true" data-placement="right" title="Histograms: <b>{{ image_name['percentage_histo'] }}%</b> <br> Features:  <b>{{ image_name['percentage_features'] }}%<br></b> ORB: <b>{{ image_name['percentage_orb'] }}%</b>">
+                                    {% if image_name['percentage_orb']|int == 100 %}
+                                    <b>DUPLICATE</b><br>
+                                    {% endif %}
+                                    {% if image_name['percentage_orb']|int > 70 and image_name['percentage_orb']|int < 100 %}
+                                    <b>NEAR DUPLICATE</b><br>
+                                    {% endif %}
+                                    Similarity: <b>{{ image_name['percentage'] }}%</b><br>
+                                </span>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        <div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+            <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+            <div class="w3-modal-content w3-animate-zoom" style="width: 40%;">
+              <img id="img01" style="width:100%">
+            </div>
+        </div>
+
+        <script>
+
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();
+            })
+
+            // Script to open and close sidebar
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+                document.getElementById("myOverlay").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+                document.getElementById("myOverlay").style.display = "none";
+            }
+
+            function onClick(element) {
+                document.getElementById("img01").src = element.src;
+                document.getElementById("modal01").style.display = "block";
+            }
+        </script>
+    </body>
+</html>

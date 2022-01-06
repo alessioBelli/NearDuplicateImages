@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJA Team</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://image.flaticon.com/icons/png/512/46/46389.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+    <style>
+      .topnav {
+        overflow: hidden;
+        background-color: rgb(224, 224, 224);
+        width: 100%;
+        height: 70px;
+      }
+
+      .topnav a {
+        float: left;
+        color: #000000;
+        text-align: center;
+        padding: 20px 16px;
+        text-decoration: none;
+        font-size: 19px;
+        width: 20%;
+        height: 100%;
+      }
+
+      .topnav a:hover {
+        background-color: rgb(95, 172, 235);
+        color: rgb(255, 255, 255);
+      }
+
+      a:hover{
+        text-decoration: none !important;
+      }
+
+      .btn-xl {
+          padding: 10px 25px;
+          font-size: 25px;
+          border-radius: 20px;
+      }
+
+      hr{ border: 1px solid  rgb(131, 190, 238)}
+    </style>
+  </head>
+  <body class="container"  style="font-family: 'Nunito', sans-serif; font-size:16px; color:black;">
+    <div class="topnav">
+      <a href="#home">Home</a>
+      <a href="#progetto">Project</a>
+      <a href="#about">About</a>
+      <a href="/upload">Upload one image</a>
+      <a href="/duplicate">Upload a set of images</a>
+    </div>
+
+    <div class="container" id="home">
+      <div class="row">
+        <div class="col">
+
+          <img src="/static/Images-amico.png" style="width: 100%;">
+        </div>
+        <div class="col" style="margin: auto;">
+          <h1 class="display-3" style="font-family: 'Audiowide', cursive;">THE FINDER</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="bgimg-1 w3-display-container w3-opacity-min" id="home" style="text-align: center;">
+      <div class="w3-display-middle" style="white-space:nowrap;">
+
+
+
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <a href="/upload" style="text-decoration: none;">
+        <button class="btn btn-primary btn-xl" type="button" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+            <path d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+          </svg>
+          <b title="Look in our dataset for near-duplicate images of your uploaded image">Upload one image</b>
+        </button>
+      </a>
+      <a href="/duplicate" style="text-decoration: none;">
+        <button class="btn btn-primary btn-xl" type="button" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+            <path d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+          </svg>
+          <b title="Look for groups of near-duplicate images within an uploaded set of images">Upload a set of images</b>
+        </button>
+      </a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="progetto">
+      <h3 style="text-align: center;">The Finder project</h3>
+      <br>
+      <div class="container" style="text-align: center;" >
+        <div class="row">
+          <div class="col">
+            <div class="w3-col m6 w3-hide-small w3-padding-large">
+              <p class="lead" style="font-family: 'Nunito';">“The Finder” is a client-server platform that aim to detect near-duplicate images through two different search algorithms. The first one consists in searching in a large dataset all the images that are near-duplicates of an uploaded image (useful for detection), the second one selects all the groups of near-duplicate images within an uploaded folder (useful for storage optimization).
+                The proposed result will be the weighted sum of three methods: histograms comparison, features comparison, ORB.
+              </p>
+          </div>
+          </div>
+          <div class="col">
+            <img src="/static/Search-pana.png" alt="upload" style="width: 100%; margin-top: -20px;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <br>
+    <br>
+    <div>
+      <h3 style="text-align: center;">About AJA TEAM</h3>
+      <br>
+      <div class="container" id="about">
+        <div class="row">
+          <div class="col">
+            <div>
+              <img src="/static/Team page-amico.png" alt="upload" style="width: 80%;">
+          </div>
+          </div>
+          <div class="col">
+            <hr>
+            <blockquote class="blockquote text-right">
+              <p class="mb-0" style="font-family: Lora">Coming together is a beginning. Keeping together is progress. Working together is success.</p>
+              <footer class="blockquote-footer"><cite title="Source Title">Henry Ford</cite></footer>
+            </blockquote>
+            <hr>
+            <table  cellspacing="5" cellpadding="5">
+              <tbody>
+                <tr>
+                  <td><b>Alberto Casagrande</b></td>
+                  <td>alberto.casagrande@studenti.unitn.it</td>
+                </tr>
+                <tr>
+                  <td><b>Alessio Belli</b></td>
+                  <td>alessio.belli@studenti.unitn.it</td>
+
+                </tr>
+                <tr>
+                  <td><b>Joy Battocchio</b></td>
+                  <td>joy.battocchio@studenti.unitn.it</td>
+
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2021 Copyright:
+        <a class="text-dark">AJA TEAM</a>
+      </div>
+    </footer>
+  </body>
+</html>
